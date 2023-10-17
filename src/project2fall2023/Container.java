@@ -71,4 +71,24 @@ public class Container {
         return this.name.equalsIgnoreCase(otherContainer.getName())
                 && this.storageCapacity == otherContainer.getStorageCapacity();
     }
+    
+    /**
+      The compareTo method compares this Container to another Object.
+      if this container is before other container, return a value < 0.
+      if this container is after other container, return a value > 0.
+      if this container is equal to other container, return 0.
+      @param otherContainer The object to test for equality.
+      @return int with result of comparison.
+   */
+    public int compareTo(Container otherContainer) {
+        if (!(otherContainer instanceof Container))
+            throw new ClassCastException("A Container object expected.");
+        
+        if (getStorageCapacity() < otherContainer.getStorageCapacity()) {
+            return -1;
+        } else if (getStorageCapacity() > otherContainer.getStorageCapacity()) {
+            return 1;
+        } else return name.compareToIgnoreCase(otherContainer.getName());
+        
+    }
 }
