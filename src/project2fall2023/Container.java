@@ -56,4 +56,19 @@ public class Container {
     public void setName(String newName) {
         name = newName;
     }
+    
+    /**
+      The equals method compares this container to another Object.
+      @param obj object to test for equality.
+      @return Boolean with result of test for equality.
+   */
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Container))
+            throw new ClassCastException("A Container object expected.");
+
+        Container otherContainer = (Container) obj;  // cast the Object to a Container
+        return this.name.equalsIgnoreCase(otherContainer.getName())
+                && this.storageCapacity == otherContainer.getStorageCapacity();
+    }
 }
