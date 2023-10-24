@@ -21,7 +21,7 @@ public class SinglyLinkedList<E extends Comparable<E>> {
     }
     
     /**
-     * appends an element to the end of the list
+     * adds an element to the list, maintaining order
      * @param newElement    the element to append
      */
     public void add(E newElement) {
