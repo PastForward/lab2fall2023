@@ -44,13 +44,20 @@ public class SinglyLinkedList<E extends Comparable<E>> {
             }
             
             if (found) {
+                // if the cursor is the head, ensure the head is replaced properly
                 if (cursor == head) {
                     head = head.getNext();
                 }
+                
+                // set the previous link to the one after
+                previous.setNext(new Node<> (newElement, cursor));
+            
+                // if it wasn't found, its most likely last,
+                // so set it as the tail
+            } else {
+                tail.setNext(new Node<> (newElement, null));
+                tail = tail.getNext();
             }
-            Node<E> newTail = new Node<>(newElement, null);
-            tail.setNext(newTail);
-            tail = newTail;
         }
         numElements++;
     }
