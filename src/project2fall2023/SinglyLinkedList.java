@@ -3,8 +3,9 @@ package project2fall2023;
 /**
  *  The SinglyLinkedList Class
  * @author Aron Kabai-Tokes
+ * @param <E>
  */
-public class SinglyLinkedList<E> {
+public class SinglyLinkedList<E extends Comparable<E>> {
     private Node<E> head;
     private Node<E> tail;
     private int numElements;
@@ -23,24 +24,34 @@ public class SinglyLinkedList<E> {
      * appends an element to the end of the list
      * @param newElement    the element to append
      */
-    public void appendList(E newElement) {
+    public void add(E newElement) {
+        Node<E> cursor = head;
+        Node<E> previous = head;
+        boolean found = false;
+        
         if (tail == null) {
             head = new Node<>(newElement, null);
             tail = head;
         } else {
+            while (cursor != null && !found) {
+                if (cursor.getData().compareTo(newElement) < 0) {
+                    previous = cursor;
+                    cursor = cursor.getNext();
+                } else {
+                    System.out.println("found! " + cursor.getData() + " is > " + cursor.getData().compareToIgnoreCase(element));
+                    found = true;
+                }
+            }
+            
+            if (found) {
+                if (cursor == head) {
+                    head = head.getNext();
+                }
+            }
             Node<E> newTail = new Node<>(newElement, null);
             tail.setNext(newTail);
             tail = newTail;
         }
-        numElements++;
-    }
-    
-    /**
-     * appends an element at the beginning of the list
-     * @param newElement    the element to append
-     */
-    public void prependList(E newElement) {
-        head = new Node<>(newElement, head);
         numElements++;
     }
     
