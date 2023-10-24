@@ -4,7 +4,7 @@ package project2fall2023;
  *
  * @author Aron Kabai-Tokes
  */
-public class Container {
+public class Container implements Comparable<Container>{
     private String name;
     private int storageCapacity;
     
@@ -80,6 +80,7 @@ public class Container {
       @param otherContainer The object to test for equality.
       @return int with result of comparison.
    */
+    @Override
     public int compareTo(Container otherContainer) {
         if (!(otherContainer instanceof Container))
             throw new ClassCastException("A Container object expected.");
