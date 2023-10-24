@@ -33,24 +33,27 @@ public class SinglyLinkedList<E extends Comparable<E>> {
             head = new Node<>(newElement, null);
             tail = head;
         } else {
-            while (cursor != null && !found) {
+            while (cursor != null && !found) { 
+                System.out.println(cursor.getData().compareTo(newElement));
                 if (cursor.getData().compareTo(newElement) < 0) {
                     previous = cursor;
                     cursor = cursor.getNext();
                 } else {
-                    System.out.println("found! " + cursor.getData() + " is > " + cursor.getData().compareTo(newElement));
                     found = true;
+                    break;
                 }
             }
             
             if (found) {
                 // if the cursor is the head, ensure the head is replaced properly
                 if (cursor == head) {
-                    head = head.getNext();
+//                    Node<E> newNode = new Node<E>(newElement, head);
+                    head = new Node<E>(newElement, head);
+                } else {
+                    // set the previous link to the one after
+                    previous.setNext(new Node<> (newElement, cursor));
                 }
                 
-                // set the previous link to the one after
-                previous.setNext(new Node<> (newElement, cursor));
             
                 // if it wasn't found, its most likely last,
                 // so set it as the tail
@@ -89,8 +92,9 @@ public class SinglyLinkedList<E extends Comparable<E>> {
         int count = 0;
         
         while(cursor != null) {
-            if (cursor.getData().equals(target))
+            if (cursor.getData().equals(target)) {
                 count++;
+            }
             cursor = cursor.getNext();
             
         }
@@ -107,8 +111,13 @@ public class SinglyLinkedList<E extends Comparable<E>> {
         Node<E> cursor = head;
         Node<E> previous = head;
         
+        
         if (head.getData().equals(target)) {
+            // if there is only one item in the list, set tail to null as well
+            if (tail.equals(head))
+                tail = null;
             head = head.getNext();
+            
             numElements--;
             return true;
         }
