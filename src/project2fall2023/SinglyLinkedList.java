@@ -38,7 +38,7 @@ public class SinglyLinkedList<E extends Comparable<E>> {
                     previous = cursor;
                     cursor = cursor.getNext();
                 } else {
-                    System.out.println("found! " + cursor.getData() + " is > " + cursor.getData().compareToIgnoreCase(element));
+                    System.out.println("found! " + cursor.getData() + " is > " + cursor.getData().compareTo(newElement));
                     found = true;
                 }
             }
