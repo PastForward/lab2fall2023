@@ -1,11 +1,11 @@
 package project2fall2023;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
 
-/**
+/** tests the SinglyLinkedList class
  *
  * @author Aron Kabai-Tokes
  */
@@ -33,6 +33,17 @@ public class SinglyLinkedListTest {
         assertTrue(instance.getSize() == 1);
         // TODO review the generated test code and remove the default call to fail.
 //        fail("element not added.");
+    }
+    
+    @Ignore
+    @Test
+    public void testAddKeepOrder() {
+        Container newElement = new Container("zzzz", 10);
+        SinglyLinkedList<Container> instance = new SinglyLinkedList();
+        instance.add(newElement);
+        instance.add(new Container("aaaa", 10));
+        instance.add(new Container("aab", 10));
+//        assertTrue(instance);
     }
 
     /**
