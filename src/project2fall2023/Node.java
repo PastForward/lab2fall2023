@@ -1,11 +1,6 @@
 package project2fall2023;
 
 /**
- *
- * @author Aron Kabai-Tokes
- */
-
-/**
  * Node class that is placed within the SinglyLinkedList
  * @author Aron Kabai-Tokes
  * @param <E>   the element data
