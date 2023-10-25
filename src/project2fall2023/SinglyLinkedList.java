@@ -34,7 +34,6 @@ public class SinglyLinkedList<E extends Comparable<E>> {
             tail = head;
         } else {
             while (cursor != null && !found) { 
-                System.out.println(cursor.getData().compareTo(newElement));
                 if (cursor.getData().compareTo(newElement) < 0) {
                     previous = cursor;
                     cursor = cursor.getNext();
