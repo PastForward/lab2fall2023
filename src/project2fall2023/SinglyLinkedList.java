@@ -10,12 +10,21 @@ public class SinglyLinkedList<E extends Comparable<E>> {
     private Node<E> tail;
     private int numElements;
     
+    /**
+    * Constructs an empty SinglyLinkedList with head and tail initialized to 
+    * null and sets the number of elements to 0.
+    */
     public SinglyLinkedList() {
         this.head = null;
         this.tail = null;
         numElements = 0;
     }
     
+    /**
+    * Returns the number of elements in the data structure.
+    *
+    * @return the number of elements in the data structure
+    */
     public int getSize() {
         return this.numElements;
     }
