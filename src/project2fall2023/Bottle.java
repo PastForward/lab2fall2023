@@ -4,7 +4,7 @@ package project2fall2023;
  *
  * @author Aron Kabai-Tokes
  */
-public class Bottle extends Container {
+public class Bottle extends Container implements Comparable<Container> {
     private String color;
     
     /** Temperature of the contents inside the bottle.
@@ -57,5 +57,22 @@ public class Bottle extends Container {
      */
     public void setContentTemperature(int newContentTemperature) {
         this.contentTemperature = newContentTemperature;
+    }
+    
+    /**
+      The equals method compares this bottle to another Object.
+      @param obj object to test for equality.
+      @return Boolean with result of test for equality.
+   */
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Bottle))
+            throw new ClassCastException("A Bottle object expected.");
+
+        Bottle otherBottle = (Bottle) obj;  // cast the Object to a Container
+        return super.getName().equalsIgnoreCase(otherBottle.getName()) 
+                && super.getStorageCapacity() == otherBottle.getStorageCapacity()
+                && this.color.equals(otherBottle.getColor())
+                && this.contentTemperature == otherBottle.getContentTemperature();
     }
 }
