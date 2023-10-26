@@ -68,8 +68,8 @@ public class Container implements Comparable<Container>{
             throw new ClassCastException("A Container object expected.");
 
         Container otherContainer = (Container) obj;  // cast the Object to a Container
-        return this.name.equalsIgnoreCase(otherContainer.getName()) 
-                && this.storageCapacity == otherContainer.getStorageCapacity();
+        return this.name.equalsIgnoreCase(otherContainer.name) 
+                && this.storageCapacity == otherContainer.storageCapacity;
     }
     
     /**
