@@ -1,12 +1,13 @@
 package project2fall2023;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.runner.RunWith;
 
 /** tests the SinglyLinkedList class
@@ -17,6 +18,7 @@ import org.junit.runner.RunWith;
 public class SinglyLinkedListTest {
     private static SinglyLinkedList<Container> instance;
     
+    @RunWith(ReplaceUnderscores.class)
     public static class normalClasses {
         
         @Before
@@ -28,7 +30,7 @@ public class SinglyLinkedListTest {
          * Test of getSize method, of class SinglyLinkedList.
          */
         @Test
-        public void testGetSize() {
+        public void get_size_of_list() {
             int expResult = 0;
             int result = instance.getSize();
             assertEquals(expResult, result);
@@ -38,7 +40,7 @@ public class SinglyLinkedListTest {
          * Test of add method, of class SinglyLinkedList.
          */
         @Test
-        public void testAdd() {
+        public void test_add() {
             Container newElement = new Container("name", 10);
             instance.add(newElement);
             assertTrue(instance.getSize() == 1);
@@ -48,7 +50,7 @@ public class SinglyLinkedListTest {
 
         @Ignore
         @Test
-        public void testAddKeepOrder() {
+        public void keep_order_when_adding_new_items() {
             Container newElement = new Container("zzzz", 10);
             instance.add(newElement);
             instance.add(new Container("aaaa", 10));
@@ -60,7 +62,7 @@ public class SinglyLinkedListTest {
          * Test of exists method, of class SinglyLinkedList.
          */
         @Test
-        public void testExists() {
+        public void test_exists() {
             Container target = new Container("name", 10);
             instance.add(target);
             boolean expResult = true;
@@ -72,7 +74,7 @@ public class SinglyLinkedListTest {
          * Test of countOccurences method, of class SinglyLinkedList.
          */
         @Test
-        public void testCountOccurences() {
+        public void test_count_occurences() {
             Container target = new Container("name", 10);
             instance.add(new Container("name", 10));
             instance.add(new Container("name", 10));
@@ -86,16 +88,16 @@ public class SinglyLinkedListTest {
     /**
      * Test of remove method, of class SinglyLinkedList.
      */
+    @RunWith(ReplaceUnderscores.class)
     public static class removeItems {
         
         @Before
-        public void setUp() {
+        public void set_up() {
             instance = new SinglyLinkedList();
         }
     
         @Test
-        @DisplayName("removing item from head when it is the only item")
-        public void removingItemWhenOnlyOne() {
+        public void removing_item_when_only_one() {
             Container target = new Container("name", 10);
             instance.add(target);
             boolean expResult = true;
@@ -104,8 +106,7 @@ public class SinglyLinkedListTest {
         }
         
         @Test
-        @DisplayName("removing item from head with more than one item")
-        public void removingItemFromHeadWhenMoreThanOne() {
+        public void removing_item_From_head_when_more_than_one() {
             Container target = new Container("name", 10);
             instance.add(target);
             instance.add(new Container("name2", 11));
@@ -116,8 +117,7 @@ public class SinglyLinkedListTest {
         }
         
         @Test
-        @DisplayName("removing item from middle")
-        public void removingItemFromMiddle() {
+        public void removing_item_from_middle() {
             Container target = new Container("name", 10);
             instance.add(new Container("name", 9));
             instance.add(target);
@@ -128,8 +128,7 @@ public class SinglyLinkedListTest {
         }
         
         @Test
-        @DisplayName("removing item from tail")
-        public void removingItemFromTail() {
+        public void removing_item_from_tail() {
             Container target = new Container("name", 10);
             instance.add(new Container("name", 8));
             instance.add(new Container("name2", 9));
