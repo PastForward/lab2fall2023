@@ -56,7 +56,7 @@ public class SinglyLinkedList<E extends Comparable<E>> {
                 // if the cursor is the head, ensure the head is replaced properly
                 if (cursor == head) {
 //                    Node<E> newNode = new Node<E>(newElement, head);
-                    head = new Node<E>(newElement, head);
+                    head = new Node<>(newElement, head);
                 } else {
                     // set the previous link to the one after
                     previous.setNext(new Node<> (newElement, cursor));
@@ -150,6 +150,9 @@ public class SinglyLinkedList<E extends Comparable<E>> {
 *
 * @return a Lister<E> using a copy of the linked list
 */
+    // This shouldn't need to be here.
+    // TODO: FIX THIS!!!
+@SuppressWarnings("unchecked")
 public Lister<E> iterator() {
     // declare variables
     Node headOfListToReturn; // beginning of new "copied" list
