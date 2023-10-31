@@ -58,4 +58,6 @@ public class Bottle extends Container implements Comparable<Container> {
     public void setContentTemperature(int newContentTemperature) {
         this.contentTemperature = newContentTemperature;
     }
+    
+    // TODO: implement proper compareTo() and equals() methods for Bottle
 }
