@@ -93,10 +93,11 @@ public class Project2Fall2023 {
     */
     public static void containerOption(SinglyLinkedList<Container> itemList, Scanner scanner) {
        
+        boolean exit = false;
         String name;
         int size;
 
-        while(true) {
+        while(!exit) {
 
             System.out.println("\n Create your container");
             System.out.println("Attributes:\nname\nstorage");
@@ -108,7 +109,7 @@ public class Project2Fall2023 {
             size = scanner.nextInt();
             scanner.nextLine();
 
-            if (size == 0 ) {
+            if (size == 0) {
                 System.out.println("cannot create a container with no size!");
                 continue;
             } else if (size < 0) {
@@ -118,7 +119,7 @@ public class Project2Fall2023 {
 
             // adding container to the list
             itemList.add(new Container(name, size));
-            break;
+            exit = true;
         }
     }
     
@@ -134,8 +135,8 @@ public class Project2Fall2023 {
         int size;
         String color;
         int temp;
-        
-        while(true) {
+        boolean exit = false;
+        while(!exit) {
             
             System.out.println("\n Create your bottle");
             System.out.println("Attributes:\nname\nsize\ncolor\ntype");
@@ -167,7 +168,7 @@ public class Project2Fall2023 {
             
             // adding a bottle to the list
             itemList.add(new Bottle(name, size, color, temp));
-            break;
+            exit = true;
         }
         
     }
@@ -186,11 +187,13 @@ public class Project2Fall2023 {
         int size;
         String color;
         int temp;
+        boolean exit = false;
+        
         if (itemList.getSize() == 0) {
             System.out.println("there is nothing to remove!");
             return;
         }
-        while(true) {
+        while(!exit) {
             System.out.println("Removing an object");
             System.out.println("do you want to exit now?");
             System.out.print("Y/N: ");
@@ -229,6 +232,8 @@ public class Project2Fall2023 {
             if (itemList.remove(removeBottle)) {
                 System.out.println("object removed!");
             } else System.out.println("object could not be removed!");
+            
+            exit = true;
         }
     }
    
@@ -245,13 +250,14 @@ public class Project2Fall2023 {
         int size;
         String color;
         int temp;
+        boolean exit = false;
         
         if (itemList.getSize() == 0) {
             System.out.println("there is nothing to find!");
             return;
         }
         
-        while(true) {
+        while(!exit) {
             System.out.println("\nFinding an object");
             System.out.println("enter attributes of an object you want to find");
             System.out.println("All words are case sensitive!");
@@ -272,17 +278,20 @@ public class Project2Fall2023 {
                     System.out.println("object found!");
                 } else System.out.println("object could not be found!");
                 
-                return;
+                exit = true;
+            } else {
+                
+                System.out.print("temp: ");
+                temp = scanner.nextInt();
+                scanner.nextLine();
+
+                Bottle removeBottle = new Bottle(name, size, color, temp);
+                if (itemList.exists(removeBottle)) {
+                    System.out.println("object found!");
+                } else System.out.println("object could not be found!");
+
+                exit = true;
             }
-            
-            System.out.print("temp: ");
-            temp = scanner.nextInt();
-            scanner.nextLine();
-            
-            Bottle removeBottle = new Bottle(name, size, color, temp);
-            if (itemList.exists(removeBottle)) {
-                System.out.println("object found!");
-            } else System.out.println("object could not be found!");
         }
     }
     
