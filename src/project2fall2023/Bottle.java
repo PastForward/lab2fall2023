@@ -60,4 +60,25 @@ public class Bottle extends Container implements Comparable<Container> {
     }
     
     // TODO: implement proper compareTo() and equals() methods for Bottle
+    /**
+      The compareTo method compares this Bottle to another Object.
+      if this bottle is before other container, return a value < 0.
+      if this bottle is after other container, return a value > 0.
+      if this bottle is equal to other container, return 0.
+      @param otherBottle The object to test for equality.
+      @return int with result of comparison.
+   */
+    public int compareTo(Bottle otherBottle) {
+        
+        if (!(otherBottle instanceof Bottle))
+            throw new ClassCastException("A bottle object expected.");
+        
+        // if they are unequal at the parent level than there is no need to
+        // compare them at the child level
+        if (super.compareTo(otherBottle) != 0)
+            return super.compareTo(otherBottle);
+        
+        // comparison between temperatures
+        return this.contentTemperature - otherBottle.getContentTemperature();
+    }
 }
