@@ -34,52 +34,16 @@ public class Project2Fall2023 {
             System.out.println("F. Find object");
             System.out.println("D. Display object(s)");
             System.out.println("X. exit");
+            System.out.print("Enter Choice: ");
 
             stringInput = scanner.nextLine();
 
             switch(stringInput.toUpperCase()) {
-                case "A" -> addObjectOption(itemList, scanner);
+                case "A" -> bottleOption(itemList, scanner);
                 case "R" -> removeObjectOption(itemList, scanner);
                 case "F" -> findObjectOption(itemList, scanner);
                 case "D" -> printListContents(itemList);
                 case "X" -> { break; }
-                default -> System.out.println("not an option!");
-            }
-        }
-    }
-    
-    /**
-     * Adds an object to the provided SinglyLinkedList using the specified Scanner.
-     * The method prompts the user to select an option and performs an action accordingly until the user chooses to exit.
-     *
-     * @param itemList the SinglyLinkedList of objects to which the user's chosen object will be added
-     * @param scanner  the Scanner object used to receive user input
-     */
-    public static void addObjectOption(SinglyLinkedList<Container> itemList, Scanner scanner) {
-        final int EXIT = 3;
-        int input = 0;
-        while(input != EXIT) {
-            System.out.println("which object would you like to add?");
-            System.out.println("1. Container");
-            System.out.println("2. Bottle");
-            System.out.println("3. Exit");
-            
-            input = scanner.nextInt();
-            scanner.nextLine();
-            
-            switch(input) {
-                case 1 -> { 
-                    containerOption(itemList, scanner);
-                    break;
-                }
-                case 2 -> { 
-                    bottleOption(itemList, scanner);
-                    break;
-                }
-                
-                case 3 -> { 
-                    break;
-                }
                 default -> System.out.println("not an option!");
             }
         }
