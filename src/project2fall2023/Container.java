@@ -85,11 +85,11 @@ public class Container implements Comparable<Container>{
         if (!(otherContainer instanceof Container))
             throw new ClassCastException("A Container object expected.");
         
-        if (storageCapacity < otherContainer.getStorageCapacity()) {
+        if (storageCapacity < otherContainer.storageCapacity) {
             return -1;
-        } else if (storageCapacity > otherContainer.getStorageCapacity()) {
+        } else if (storageCapacity > otherContainer.storageCapacity) {
             return 1;
-        } else return name.compareToIgnoreCase(otherContainer.getName());
+        } else return name.compareToIgnoreCase(otherContainer.name);
         
     }
 }
