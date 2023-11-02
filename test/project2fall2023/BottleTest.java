@@ -1,6 +1,5 @@
 package project2fall2023;
 
-import junit.textui.ResultPrinter;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,18 +20,19 @@ public class BottleTest {
     @RunWith(ReplaceUnderscores.class)
     public static class GettersAndSettersTest {
         static Bottle instance;
+        static String defaultName = "name";
+        static int defaultStorageCapacity = 10;
+        static String defaultColor = "red";
+        static int defaultTemp = 0;
 
         @AfterClass
         public static void tearDownClass() {
             instance = null;
+            defaultName = null;
+            defaultColor = null;
         }
         @Before
         public void set_up() {
-            instance = null;
-        }
-        
-        @AfterClass
-        public static void tear_down() {
             instance = null;
         }
         
@@ -43,7 +43,7 @@ public class BottleTest {
        public void Get_Color() {
            System.out.println("getColor");
            String expResult = "red";
-           instance = new Bottle("name", 10, expResult, 0);
+           instance = new Bottle(defaultName, defaultStorageCapacity, expResult, defaultTemp);
            String result = instance.getColor();
            System.out.println("expResult: " + expResult);
            System.out.println("actual: " + result);
@@ -58,7 +58,7 @@ public class BottleTest {
            System.out.println("setColor");
            boolean expResult = true;
            String newColor = "red";
-           instance = new Bottle("name", 10, newColor, 0);
+           instance = new Bottle(defaultName, defaultStorageCapacity, newColor, defaultTemp);
            instance.setColor(newColor);
            assertTrue(newColor.equals(instance.getColor()), expResult + "!=" + instance.getColor());
        }
@@ -70,7 +70,7 @@ public class BottleTest {
        public void testGetContentTemperature() {
            System.out.println("getContentTemperature");
            int expResult = 0;
-           instance = new Bottle("name", 10, "red", expResult);
+           instance = new Bottle(defaultName, defaultStorageCapacity, defaultColor, expResult);
            int result = instance.getContentTemperature();
            assertEquals(expResult, result);
        }
@@ -81,8 +81,8 @@ public class BottleTest {
        @Test
        public void testSetContentTemperature() {
            System.out.println("setContentTemperature");
-           int newContentTemperature = 0;
-           instance = new Bottle("name", 10, "red", 3);
+           int newContentTemperature = 6;
+           instance = new Bottle(defaultName, defaultStorageCapacity, defaultColor, defaultTemp);
            instance.setContentTemperature(newContentTemperature);
            assertEquals(newContentTemperature, instance.getContentTemperature());
        }
@@ -174,6 +174,32 @@ public class BottleTest {
             int expResult2 = -1;
             int result2 = otherBottle.compareTo(bottle);
             assertEquals(expResult2, result2);
+        }
+        
+        /**
+         * comparing contentTemperature values in bottle compareTo method
+         * when the temperatures are the same.
+         */
+        @Test
+        public void comparing_content_temperature_values_same() {
+            bottle = new Bottle("name", 10, "red", 0);
+            otherBottle = new Bottle("name", 10, "red", 0);
+            int expResult = 0;
+            int result = bottle.compareTo(otherBottle);
+            assertEquals(expResult, result);
+        }
+        
+        /**
+         * comparing contentTemperature values in bottle compareTo method
+         * when the temperatures are different.
+         */
+        @Test
+        public void comparing_content_temperature_values_different() {
+            bottle = new Bottle("name", 10, "red", 10);
+            otherBottle = new Bottle("name", 10, "red", 0);
+            int expResult = 10;
+            int result = bottle.compareTo(otherBottle);
+            assertEquals(expResult, result);
         }
     }   
 }
