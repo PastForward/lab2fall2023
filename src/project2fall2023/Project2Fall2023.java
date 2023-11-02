@@ -1,4 +1,4 @@
-    package project2fall2023;
+package project2fall2023;
 import java.util.Scanner;
 /**
  *  Main file for Project2Fall2023
